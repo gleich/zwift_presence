@@ -8,7 +8,7 @@ pub struct Data {
     pub speed: f64,
     pub power: u16,
     pub distance: f64,
-    pub cadence: f64,
+    pub cadence: u8,
     pub heart_rate: u8,
     pub altitude: f64,
 }
@@ -38,8 +38,8 @@ impl Data {
                     _ => println!("distance doesn't have value of u16"),
                 },
                 "cadence" => match field.value() {
-                    Value::Float64(v) => data.cadence = *v,
-                    _ => println!("cadence doesn't have value of u16"),
+                    Value::UInt8(v) => data.cadence = *v,
+                    _ => println!("cadence doesn't have value of u8"),
                 },
                 "heart_rate" => match field.value() {
                     Value::UInt8(v) => data.heart_rate = *v,
