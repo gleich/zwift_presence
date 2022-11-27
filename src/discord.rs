@@ -14,8 +14,13 @@ pub fn connect() -> Result<DiscordIpcClient, Box<dyn std::error::Error>> {
 pub fn update(data: Data, client: &mut DiscordIpcClient) -> Result<(), Box<dyn std::error::Error>> {
     client.set_activity(
         Activity::new()
-            .state("Cycling")
-            .details("foo bar")
+            .state(&format!(
+                "{} watts | {} bpm | {} mph",
+                data.power.unwrap_or_default(),
+                data.heart_rate.unwrap_or_default(),
+                data.speed.unwrap_or_default(),
+            ))
+            .details("Cycling")
             .assets(Assets::new().large_image("zwift")),
     )?;
     Ok(())

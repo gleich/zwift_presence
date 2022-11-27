@@ -8,4 +8,6 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.66"
 discord-rich-presence = "0.2.3"
+env_logger = "0.10.0"
 fitparser = "0.5.1"
+log = "0.4.17"
